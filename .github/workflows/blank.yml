@@ -2,7 +2,7 @@ name: GitHub Actions Build and Deploy Demo
 on:
     push:
         branches:
-            - dev
+            - master
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
@@ -10,14 +10,14 @@ jobs:
             - name: Checkout
               uses: actions/checkout@master
               with:
-                  ref: dev
+                  ref: master
                   fetch-depth: 0
 
             - name: Build and Deploy
               uses: JamesIves/github-pages-deploy-action@master
               env:
                   ACCESS_TOKEN: ${{ secrets.ACTION_TOKEN }}
-                  BASE_BRANCH: dev
-                  BRANCH: master
+                  BASE_BRANCH: master
+                  BRANCH: gh-pages
                   FOLDER: dist
                   BUILD_SCRIPT: npm install && npm run build
