@@ -32,8 +32,9 @@
 </template>
 
 <script lang="ts">
-let observerInstance
-export default {
+import { defineComponent } from 'vue'
+let observerInstance: IntersectionObserver
+export default defineComponent({
     data () {
         return {
             threshold: [0, 0.5, 0.8, 1],
@@ -55,7 +56,7 @@ export default {
         inputChange () {
             if (observerInstance) observerInstance.disconnect()
             let observer = this.observer()
-            observer.observe(document.querySelector('.hook'))
+            observer.observe(document.querySelector('.hook') as Element)
         },
 
         observer () {
@@ -77,7 +78,7 @@ export default {
             return observerInstance
         }
     }
-}
+})
 </script>
 
 <style>
