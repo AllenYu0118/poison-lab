@@ -1,7 +1,8 @@
 const path = require('path')
 
 module.exports = {
-    base: './',
+    base: './gh-pages/',
+    esbuildTarget: 'es2015',
     alias: {
         '/@/': path.resolve(__dirname, './src')
     }
