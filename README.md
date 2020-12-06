@@ -4,4 +4,4 @@
 
 ## Todo
 
-- [ ] `Github Action` 配置，基于 `dev` 的开发分支，构建到 `master`
+- [x] `Github Action` 配置，基于 `dev` 的开发分支，构建到 `master`

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 export default createRouter({
-    history: createWebHistory(process.env.VITE_ROUTER_BASE),
+    history: createWebHistory('/poison-lab/'),
+    
     routes: [
         {
             path: '/',
