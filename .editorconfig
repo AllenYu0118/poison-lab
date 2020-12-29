@@ -1,0 +1,12 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+# 删除行尾的空格
+trim_trailing_whitespace = true
+
+# 在行尾插入空行
+insert_final_newline = true

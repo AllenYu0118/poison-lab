@@ -13,7 +13,11 @@ export const routes = [
     {
         path: '/publish-subscribe',
         component: () => import('/@/views/publish-subscribe/index.vue')
-    }
+    },
+    {
+        path: '/ref-effect',
+        component: () => import('/@/views/ref-effect/index.vue')
+    },
 ]
 
 export default createRouter({
