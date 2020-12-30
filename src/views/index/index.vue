@@ -1,14 +1,17 @@
 <template>
     <img alt="Vue logo" src="/@/assets/logo.png" />
-    <h2>{{ x }}:{{ y }}</h2>
-    <p v-for="(route, index) in routes" :key="index">
-        <router-link :to="route.path">{{ route.path }}</router-link>
-    </p>
-    <input v-model="text"> {{ text }}
-    <div @click="counterClickHandle">{{ counter }}</div>
-    <p>{{ twiceCounter }}</p>
-
     <HelloWorld msg="Hello Vue 3.0 + Vite" />
+
+    <h3>useMousePosition：{{ x }}:{{ y }}</h3>
+
+    <h3>路由：</h3>
+    <span v-for="(route, index) in routes" :key="index" style="margin-right: 20px;">
+        <router-link :to="route.path">{{ route.path }}</router-link>
+    </span>
+
+    <p>customRef：<input v-model="text"> {{ text }}</p>
+
+    <div @click="counterClickHandle">ref: {{ counter }}</div>
 </template>
 
 <script lang="ts">
@@ -16,47 +19,40 @@ import { defineComponent, onMounted, onUpdated, ref, watch, computed } from 'vue
 import { useMousePosition, useDebouncedRef } from '/@/hooks/'
 import HelloWorld from '/@/components/HelloWorld.vue'
 import { routes } from '/@/router/'
+import { useWatchEffect } from './watchEffect'
 
 interface Data {
   itemRefs: HTMLElement[]
 }
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  setup(props, ctx) {
-    let itemRefs: HTMLElement[] = []
-    const setItemRef = (el: HTMLElement) => itemRefs.push(el)
+    name: 'App',
+    components: {
+        HelloWorld
+    },
+    setup(props, ctx) {
+        // ref demo
+        const counter = ref(0)
+        const counterClickHandle = () => {
+        counter.value++
+        }
 
+        // composition api
+        const { x, y } = useMousePosition()
 
-    onMounted(() => {
-      counterClickHandle()
-    })
+        // watchEffect demo
+        useWatchEffect(counter)
 
-    const counter = ref(0)
+        // customRef demo
+        const text = useDebouncedRef('hello')
 
-    watch(counter, (newVal, oldVal) => {
-      console.log('newVal, oldVal: ', newVal, oldVal, itemRefs);
-    })
-
-    const twiceCounter = computed(() => counter.value * 2)
-
-    const counterClickHandle = () => {
-      counter.value++
-      console.log('counter: ', counter.value);
+        return {
+        x,
+        y,
+        counter,
+        counterClickHandle,
+        routes,
+        text
+        }
     }
-    const { x, y } = useMousePosition()
-
-    return {
-      x,
-      y,
-      counter,
-      counterClickHandle,
-      twiceCounter,
-      routes,
-      text: useDebouncedRef('hello')
-    }
-  }
 })
 </script>
