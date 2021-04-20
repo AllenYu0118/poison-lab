@@ -33,7 +33,7 @@ export default defineComponent({
         // ref demo
         const counter = ref(0)
         const counterClickHandle = () => {
-        counter.value++
+            counter.value++
         }
 
         // composition api

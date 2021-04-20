@@ -18,6 +18,18 @@ export const routes = [
         path: '/ref-effect',
         component: () => import('/@/views/ref-effect/index.vue')
     },
+
+    {
+        path: '/demo',
+        component: () => import('/@/views/demo/1.vue'),
+        children: [
+            {
+                path: '/1',
+                component: () => import('/@/views/demo/1.vue')
+            }
+
+        ]
+    },
 ]
 
 export default createRouter({
