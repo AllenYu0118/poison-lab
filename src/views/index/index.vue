@@ -6,7 +6,16 @@
 
     <h3>路由：</h3>
     <span v-for="(route, index) in routes" :key="index" style="margin-right: 20px;">
-        <router-link :to="route.path">{{ route.path }}</router-link>
+        <template v-if="route.children">
+            <p><router-link :to="route.path">{{ route.path }}</router-link></p>
+            <span v-for="(subRoute, subIndex) in route.children" :key="subIndex" style="margin-right: 20px;">
+                <router-link :to="route.path + subRoute.path">{{ subRoute.path }}</router-link>
+            </span>
+        </template>
+
+        <template v-else>
+            <router-link :to="route.path">{{ route.path }}</router-link>
+        </template>
     </span>
 
     <p>customRef：<input v-model="text"> {{ text }}</p>
@@ -46,12 +55,12 @@ export default defineComponent({
         const text = useDebouncedRef('hello')
 
         return {
-        x,
-        y,
-        counter,
-        counterClickHandle,
-        routes,
-        text
+            x,
+            y,
+            counter,
+            counterClickHandle,
+            routes,
+            text
         }
     }
 })

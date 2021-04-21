@@ -21,11 +21,15 @@ export const routes = [
 
     {
         path: '/demo',
-        component: () => import('/@/views/demo/1.vue'),
+        component: () => import('/@/views/demo/index.vue'),
         children: [
             {
                 path: '/1',
                 component: () => import('/@/views/demo/1.vue')
+            },
+            {
+                path: '/2',
+                component: () => import('/@/views/demo/2.vue')
             }
 
         ]
