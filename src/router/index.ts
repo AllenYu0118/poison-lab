@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-const base = process.env.NODE_ENV === 'development' ? '' : '/poison-lab/'
 
 export const routes = [
     {
@@ -24,12 +23,12 @@ export const routes = [
         component: () => import('/@/views/demo/index.vue'),
         children: [
             {
-                path: '/1',
-                component: () => import('/@/views/demo/1.vue')
+                path: 'demoOne',
+                component: () => import('/@/views/demo/one.vue')
             },
             {
-                path: '/2',
-                component: () => import('/@/views/demo/2.vue')
+                path: 'demoTwo',
+                component: () => import('/@/views/demo/two.vue')
             }
 
         ]
@@ -37,6 +36,6 @@ export const routes = [
 ]
 
 export default createRouter({
-    history: createWebHistory(base),
+    history: createWebHistory('/poison-lab/'),
     routes
 })
