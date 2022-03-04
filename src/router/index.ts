@@ -22,6 +22,11 @@ export const routes = [
     path: '/demo',
     component: () => import('/@/views/demo/index.vue'),
   },
+
+  {
+    path: '/ffmpeg',
+    component: () => import('/@/views/ffmpeg/index.vue'),
+  },
 ]
 
 export default createRouter({

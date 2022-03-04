@@ -1,5 +1,4 @@
-declare global {
-  interface Window {
-    data: object
-  }
+interface Window {
+  data: object
+  FFmpeg: any
 }
