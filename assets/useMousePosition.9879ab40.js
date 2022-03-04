@@ -1,1 +1,0 @@
-import{k as e,l as o,m as s,n}from"./index.3ca2b568.js";const a=()=>{const a=o({x:0,y:0}),r=e=>{a.x=e.pageX,a.y=e.pageY};return s((()=>{window.addEventListener("mousemove",r)})),n((()=>{window.removeEventListener("mouseover",r)})),e(a)};export{a as u};
