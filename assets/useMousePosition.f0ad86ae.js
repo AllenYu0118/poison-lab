@@ -1,1 +1,0 @@
-import{q as n,s as t,u as i,x as r}from"./vendor.c3fc92a3.js";const u=()=>{const o=t({x:0,y:0}),e=s=>{o.x=s.pageX,o.y=s.pageY};return i(()=>{window.addEventListener("mousemove",e)}),r(()=>{window.removeEventListener("mouseover",e)}),n(o)};export{u};
