@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
-import ts from '../ts'
+import { defineComponent, ref, computed, watchEffect } from 'vue'
+// import ts from '../ts'
 import '../ffmpeg.min.js'
 
 const { createFFmpeg, fetchFile } = window.FFmpeg
@@ -27,12 +27,12 @@ interface Progress {
 
 export default defineComponent({
   props: {
-    url: String,
+    media: [String, File],
   },
   setup(props) {
     const dataList = ref([] as DataItem[])
     const duration = ref(0)
-    const count = 9
+    const count = 2
     const fileName = 'video'
 
     const step = computed(() => {
@@ -50,8 +50,12 @@ export default defineComponent({
       }
     })
 
+    watchEffect(async () => {
+      await init(props.media)
+    })
+
     // 初始化
-    ;(async (media: string | File) => {
+    async function init(media: string | File) {
       if (!ffmpeg.isLoaded()) {
         await ffmpeg.load()
       }
@@ -59,7 +63,7 @@ export default defineComponent({
       ffmpeg.FS('writeFile', fileName, await fetchFile(media))
 
       await nextTick(0, count)
-    })(props.url)
+    }
 
     async function nextTick(init, stop) {
       const data = await transToImage(init)
