@@ -2,11 +2,11 @@
   <h1>{{ msg }}</h1>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 }
 </script>
