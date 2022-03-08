@@ -1,12 +1,5 @@
 <template>
-  <h2>{{ x }}:{{ y }}</h2>
-  <div
-    class="item"
-    v-for="item in 5"
-    :ref="setItemRef"
-    :data-time="new Date()"
-    :key="item"
-  >
+  <div class="item" v-for="item in 5" :ref="setItemRef" :data-time="new Date()" :key="item">
     {{ item }}
   </div>
 
@@ -14,24 +7,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch, toRaw } from 'vue'
-import { useMousePosition } from '@/hooks/'
+import { defineComponent, reactive, watch } from 'vue'
 export default defineComponent({
   setup() {
     let itemRefs: HTMLElement[] = reactive([])
     const setItemRef = (el: HTMLElement) => itemRefs.push(el)
 
     watch(itemRefs, () => {
-      console.log('itemRefs: ', itemRefs, toRaw(itemRefs))
+      console.log('itemRefs: ', itemRefs)
     })
-
-    const { x, y } = useMousePosition()
 
     return {
       setItemRef,
       itemRefs,
-      x,
-      y,
     }
   },
 })

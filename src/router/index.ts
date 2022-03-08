@@ -27,6 +27,11 @@ export const routes = [
     path: '/ffmpeg',
     component: () => import('@/views/ffmpeg/index.vue'),
   },
+
+  {
+    path: '/use-pinia',
+    component: () => import('@/views/use-pinia/index.vue'),
+  },
 ]
 
 export default createRouter({
