@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
-export const routes = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/views/index/index.vue'),
@@ -31,6 +32,14 @@ export const routes = [
   {
     path: '/use-pinia',
     component: () => import('@/views/use-pinia/index.vue'),
+  },
+
+  {
+    path: '/vueuse',
+    component: () => import('@/views/vueuse/index.vue'),
+    children: [
+      { path: 'bug-use-element-visibility', component: () => import('@/views/vueuse/BugUseElementVisibility.vue') },
+    ],
   },
 ]
 

@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@vueuse/core": "^8.0.0",
     "pinia": "^2.0.11",
     "vue": "^3.2.6",
     "vue-router": "^4.0.6"
