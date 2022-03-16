@@ -39,6 +39,8 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/vueuse/index.vue'),
     children: [
       { path: 'bug-use-element-visibility', component: () => import('@/views/vueuse/BugUseElementVisibility.vue') },
+      { path: 'bug-use-clipboard', component: () => import('@/views/vueuse/BugUseClipboard.vue') },
+      { path: 'createFetch', component: () => import('@/views/vueuse/CreateFetch.vue') },
     ],
   },
 ]
