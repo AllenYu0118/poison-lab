@@ -10,12 +10,8 @@
       <p>
         <router-link :to="route.path">{{ route.path }}</router-link>
       </p>
-      <span
-        v-for="(subRoute, subIndex) in route.children"
-        :key="subIndex"
-        style="margin-right: 20px"
-      >
-        <router-link :to="route.path + subRoute.path">{{ subRoute.path }}</router-link>
+      <span v-for="(subRoute, subIndex) in route.children" :key="subIndex" style="margin-right: 20px">
+        <router-link :to="route.path + '/' + subRoute.path">{{ subRoute.path }}</router-link>
       </span>
     </template>
 
